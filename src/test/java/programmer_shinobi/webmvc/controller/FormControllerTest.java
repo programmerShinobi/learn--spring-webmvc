@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,21 +14,22 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
-
 @SpringBootTest
 @AutoConfigureMockMvc
-class DateControllerTest {
+class FormControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void date() throws Exception {
+    void formHello() throws Exception {
         mockMvc.perform(
-                get("/date").queryParam("date", "2028-10-10")
+                post("/form/hello")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("name", "Faqih")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("Date : 20281010"))
+                content().string(Matchers.containsString("Hello Faqih"))
         );
     }
 
