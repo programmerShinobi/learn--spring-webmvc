@@ -1,0 +1,26 @@
+POST http://localhost:8181/api/person
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Faqih",
+  "middleName": "Pratama",
+  "lastName": "Muhti",
+  "email": "faqih@example.com",
+  "phone": "0812121212",
+  "hobbies": ["Coding", "Reading", "Joging"],
+  "socialMedia": [
+    {
+      "name": "Facebook",
+      "location": "facebook.com/ProgrammerShinobi"
+    },
+    {
+      "name": "Instagram",
+      "location": "instagram.com/ProgrammerShinobi"
+    },
+    {
+      "name": "Twitter",
+      "location": "twitter.com/ProgrammerShinobi"
+    }
+  ]
+}
