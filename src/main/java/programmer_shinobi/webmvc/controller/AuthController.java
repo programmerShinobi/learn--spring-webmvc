@@ -3,6 +3,7 @@ package programmer_shinobi.webmvc.controller;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,9 @@ public class AuthController {
     ) {
         boolean credentialsValid = "faqih".equals(username) && "secret".equals(password);
         if (credentialsValid) {
+            HttpSession session = servletRequest.getSession(true);
+            session.setAttribute("user", username);
+
             Cookie cookie = new Cookie("username", username);
             cookie.setPath("/");
             servletResponse.addCookie(cookie);
